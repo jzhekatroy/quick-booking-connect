@@ -1,0 +1,46 @@
+import logo from "@/assets/logo.png";
+import { Button } from "./ui/button";
+
+const Hero = () => {
+  return (
+    <section className="relative pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-accent/5" />
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="max-w-4xl mx-auto text-center space-y-8">
+          <div className="flex justify-center mb-8">
+            <img src={logo} alt="2Minutes" className="h-24 w-auto" />
+          </div>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+            Онлайн-бронирование услуг
+            <span className="block mt-2 bg-clip-text text-transparent" 
+                  style={{ backgroundImage: 'var(--gradient-primary)' }}>
+              в 2 клика
+            </span>
+          </h1>
+          <p className="text-xl lg:text-2xl text-muted-foreground max-w-2xl mx-auto">
+            Простой и удобный сервис для записи клиентов через Telegram. 
+            Бесплатные уведомления, управление без звонков и полная автоматизация.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+            <Button 
+              size="lg" 
+              className="text-base font-semibold px-8"
+              style={{ background: 'var(--gradient-primary)' }}
+            >
+              Начать бесплатно
+            </Button>
+            <Button 
+              size="lg" 
+              variant="outline"
+              className="text-base font-semibold px-8"
+            >
+              Узнать больше
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Hero;
