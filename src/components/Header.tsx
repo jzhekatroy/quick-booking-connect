@@ -6,7 +6,7 @@ const Header = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <img src={logo} alt="2Minutes" className="h-10 w-auto" />
+            <img src={logo} alt="2Minutes" className="h-8 sm:h-10 w-auto object-contain" />
           </div>
           <nav className="hidden md:flex space-x-8">
             <a href="#features" className="text-foreground/70 hover:text-primary transition-colors">

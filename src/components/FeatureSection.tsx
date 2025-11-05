@@ -24,7 +24,7 @@ const FeatureSection = ({ title, description, image, reverse = false }: FeatureS
               <img 
                 src={image} 
                 alt={title}
-                className="relative rounded-3xl shadow-lg w-full h-auto"
+                className="relative rounded-3xl shadow-lg w-full h-auto object-contain"
                 style={{ boxShadow: 'var(--shadow-soft)' }}
               />
             </div>
