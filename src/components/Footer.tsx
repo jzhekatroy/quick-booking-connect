@@ -6,7 +6,7 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Контакты</h3>
             <p className="text-muted-foreground">
-              Email: info@2minutes.app
+              Email: i@2minutes.ru
             </p>
             <p className="text-muted-foreground">
               Telegram: @2minutes_support
