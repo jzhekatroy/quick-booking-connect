@@ -16,8 +16,9 @@ const Hero = () => {
               на ваши услуги
             </span>
           </h1>
-          <p className="text-xl lg:text-2xl text-muted-foreground max-w-2xl mx-auto">Забудьте о звонках и пропущенных клиентах. Все записи — в одном месте, прямо в телефоне ваших клиентов.
-<strong className="font-bold">Всего за 500 рублей в месяц.</strong></p>
+          <p className="text-xl lg:text-2xl text-muted-foreground max-w-2xl mx-auto">
+            Забудьте о неудобной рутине. Простая, современная и очень понятная система управления онлайн-заказами услуг с широким функционалом <strong className="font-bold">всего за 500 рублей в месяц (за одного мастера)</strong>.
+          </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
             <Button size="lg" className="text-base font-semibold px-8" style={{
             background: 'var(--gradient-primary)'
