@@ -5,7 +5,7 @@ import TargetAudience from "@/components/TargetAudience";
 import FeatureSection from "@/components/FeatureSection";
 
 import bookingDemo from "@/assets/booking-demo.mp4";
-import appointmentsManagement from "@/assets/appointments-management.png";
+import appointmentsManagement from "@/assets/appointments-management-new.jpg";
 import notifications from "@/assets/notifications.png";
 import employeeSchedule from "@/assets/employee-schedule.png";
 import adminDashboard from "@/assets/admin-dashboard.png";
