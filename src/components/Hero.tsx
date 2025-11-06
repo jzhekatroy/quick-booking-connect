@@ -1,4 +1,5 @@
 import logo from "@/assets/logo.png";
+import telegramMockup from "@/assets/telegram-mockup.jpg";
 import { Button } from "./ui/button";
 const Hero = () => {
   return <section className="relative pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden">
@@ -43,10 +44,10 @@ const Hero = () => {
               </div>
             </div>
 
-            {/* Right side - Logo */}
+            {/* Right side - Phone mockup */}
             <div className="flex justify-center lg:justify-end order-1 lg:order-2">
-              <div className="relative w-full max-w-[300px]">
-                <img src={logo} alt="2Minutes" className="w-full h-auto object-contain" />
+              <div className="relative w-full max-w-[213px] lg:max-w-[240px]">
+                <img src={telegramMockup} alt="Telegram мини-приложение для записи" className="w-full h-auto rounded-3xl shadow-2xl" />
               </div>
             </div>
           </div>
