@@ -11,7 +11,8 @@ const TargetAudience = () => {
   return (
     <section className="py-16 lg:py-24 bg-accent/5">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center">
           <h2 className="text-3xl lg:text-4xl font-bold tracking-tight mb-12">Для кого это?</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {audiences.map((audience, index) => (
@@ -25,6 +26,7 @@ const TargetAudience = () => {
                 <p className="text-lg text-left flex-1">{audience}</p>
               </div>
             ))}
+          </div>
           </div>
         </div>
       </div>
