@@ -1,6 +1,8 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
+import TargetAudience from "@/components/TargetAudience";
+import BookingMethods from "@/components/BookingMethods";
 import FeatureSection from "@/components/FeatureSection";
 
 import bookingInterface from "@/assets/booking-interface.png";
@@ -17,6 +19,8 @@ const Index = () => {
       <Header />
       <main>
         <Hero />
+        <TargetAudience />
+        <BookingMethods />
         
         <div id="features" className="space-y-0">
           <FeatureSection
