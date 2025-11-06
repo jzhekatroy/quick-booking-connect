@@ -18,8 +18,8 @@ const FeatureSection = ({ title, description, image, video, reverse = false }: F
             <h2 className="text-3xl lg:text-4xl font-bold tracking-tight">{title}</h2>
             <p className="text-lg text-muted-foreground leading-relaxed">{description}</p>
           </div>
-          <div className={`${reverse ? 'lg:order-1' : 'lg:order-2'}`}>
-            <div className="relative">
+          <div className={`${reverse ? 'lg:order-1' : 'lg:order-2'} flex justify-center`}>
+            <div className="relative" style={{ width: '33.33%' }}>
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl transform rotate-3" 
                    style={{ boxShadow: 'var(--shadow-medium)' }} />
               {video ? (
