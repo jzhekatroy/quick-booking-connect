@@ -3,12 +3,13 @@ import { ReactNode } from "react";
 interface FeatureSectionProps {
   title: string;
   description: string;
-  image: string;
+  image?: string;
+  video?: string;
   reverse?: boolean;
   children?: ReactNode;
 }
 
-const FeatureSection = ({ title, description, image, reverse = false }: FeatureSectionProps) => {
+const FeatureSection = ({ title, description, image, video, reverse = false }: FeatureSectionProps) => {
   return (
     <section className="py-16 lg:py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -21,12 +22,24 @@ const FeatureSection = ({ title, description, image, reverse = false }: FeatureS
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl transform rotate-3" 
                    style={{ boxShadow: 'var(--shadow-medium)' }} />
-              <img 
-                src={image} 
-                alt={title}
-                className="relative rounded-3xl shadow-lg w-full h-auto object-contain"
-                style={{ boxShadow: 'var(--shadow-soft)' }}
-              />
+              {video ? (
+                <video 
+                  src={video}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="relative rounded-3xl shadow-lg w-full h-auto object-contain"
+                  style={{ boxShadow: 'var(--shadow-soft)' }}
+                />
+              ) : (
+                <img 
+                  src={image} 
+                  alt={title}
+                  className="relative rounded-3xl shadow-lg w-full h-auto object-contain"
+                  style={{ boxShadow: 'var(--shadow-soft)' }}
+                />
+              )}
             </div>
           </div>
         </div>

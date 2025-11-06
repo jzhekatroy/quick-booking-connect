@@ -4,7 +4,7 @@ import Hero from "@/components/Hero";
 import TargetAudience from "@/components/TargetAudience";
 import FeatureSection from "@/components/FeatureSection";
 
-import bookingInterface from "@/assets/booking-interface.png";
+import bookingDemo from "@/assets/booking-demo.mp4";
 import appointmentsManagement from "@/assets/appointments-management.png";
 import notifications from "@/assets/notifications.png";
 import employeeSchedule from "@/assets/employee-schedule.png";
@@ -24,7 +24,7 @@ const Index = () => {
           <FeatureSection
             title="Простая запись в 3 клика"
             description="Telegram (скоро MAX) автоматически подтягивают данные клиента — никаких форм с номером телефона, почтой или адресом. Клиент просто выбирает услугу, мастера и время."
-            image={bookingInterface}
+            video={bookingDemo}
           />
 
           <FeatureSection
