@@ -1,7 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
-import TargetAudience from "@/components/TargetAudience";
 import FeatureSection from "@/components/FeatureSection";
 
 import bookingDemo from "@/assets/booking-demo.mp4";
@@ -18,7 +17,6 @@ const Index = () => {
       <Header />
       <main>
         <Hero />
-        <TargetAudience />
         
         <div id="features" className="space-y-0">
           <FeatureSection
