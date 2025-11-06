@@ -18,7 +18,7 @@ const Hero = () => {
           </h1>
           <p className="text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto">
             Простая и функциональная система бронирования заказов в мобильном телефоне. Забудьте о рутине и взаимодействуйте с клиентами удобным для них способом <br />
-            <strong className="font-bold">всего за 500 рублей в месяц (за одного мастера).</strong>
+            <strong className="font-bold">всего за 500 рублей в месяц (на одного мастера).</strong>
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
             <Button size="lg" className="text-base font-semibold px-8" style={{
