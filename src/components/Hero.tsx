@@ -17,7 +17,7 @@ const Hero = () => {
             </span>
           </h1>
           <p className="text-xl lg:text-2xl text-muted-foreground max-w-2xl mx-auto">
-            Удобное бронирование заказов в мобильном телефоне. Забудьте о рутине <br />
+            Удобное бронирование заказов в мобильном телефоне. Забудьте о рутине и взаимодействуйте с клиентами удобным для них способом <br />
             <strong className="font-bold">всего за 500 рублей в месяц (за одного мастера).</strong>
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
