@@ -1,9 +1,7 @@
 import logo from "@/assets/logo.png";
 import { Button } from "./ui/button";
-
 const Hero = () => {
-  return (
-    <section className="relative pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden">
+  return <section className="relative pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-accent/5" />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="max-w-4xl mx-auto text-center space-y-8">
@@ -11,10 +9,9 @@ const Hero = () => {
             <img src={logo} alt="2Minutes" className="h-16 sm:h-20 lg:h-24 w-auto object-contain" />
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-            <span className="block bg-clip-text text-transparent" 
-                  style={{ backgroundImage: 'var(--gradient-primary)' }}>
-              Онлайн-записи клиентов
-            </span>
+            <span className="block bg-clip-text text-transparent" style={{
+            backgroundImage: 'var(--gradient-primary)'
+          }}>Онлайн-запись клиентов</span>
             <span className="block mt-2">
               на ваши услуги
             </span>
@@ -23,25 +20,17 @@ const Hero = () => {
             Простой и удобный сервис для салонов красоты, барбершопов, мастеров на дому и услуг с фиксированной длительностью. С помощью нашего сервиса вы быстро и недорого организуете запись, автоматизируете коммуникацию с клиентами и мгновенно оповестите их о новых услугах, скидках и акциях. Простой, удобный и выгодный способ управлять бизнесом без лишних затрат и сложностей.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <Button 
-              size="lg" 
-              className="text-base font-semibold px-8"
-              style={{ background: 'var(--gradient-primary)' }}
-            >
+            <Button size="lg" className="text-base font-semibold px-8" style={{
+            background: 'var(--gradient-primary)'
+          }}>
               Начать бесплатно
             </Button>
-            <Button 
-              size="lg" 
-              variant="outline"
-              className="text-base font-semibold px-8"
-            >
+            <Button size="lg" variant="outline" className="text-base font-semibold px-8">
               Узнать больше
             </Button>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
