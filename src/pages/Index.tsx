@@ -6,7 +6,7 @@ import FeatureSection from "@/components/FeatureSection";
 
 import bookingDemo from "@/assets/booking-demo.mp4";
 import appointmentsManagement from "@/assets/appointments-management-new.jpg";
-import notifications from "@/assets/notifications.png";
+import notifications from "@/assets/notifications-new.jpg";
 import employeeSchedule from "@/assets/employee-schedule.png";
 import adminDashboard from "@/assets/admin-dashboard.png";
 import analytics from "@/assets/analytics.png";
@@ -36,7 +36,7 @@ const Index = () => {
 
           <FeatureSection
             title="Бесплатные и безлимитные уведомления клиентам"
-            description="Система автоматически отправляет уведомления клиентам прямо в Telegram — полностью бесплатно и без ограничений. Подтверждение записи, напоминания о визите и рассылки с акциями. Отправляйте сколько угодно сообщений без дополнительной платы — всё уже включено в тариф."
+            description="Система автоматически отправляет подтверждение записи, напоминания о визите и рассылки с акциями. Отправляйте сколько угодно сообщений без дополнительной платы — всё уже включено в тариф."
             image={notifications}
           />
 
