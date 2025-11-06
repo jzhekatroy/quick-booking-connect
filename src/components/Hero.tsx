@@ -9,19 +9,8 @@ const Hero = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            {/* Left side - Phone mockup */}
-            <div className="flex justify-center lg:justify-start">
-              <div className="relative w-full max-w-[320px] lg:max-w-[360px]">
-                <img 
-                  src={telegramMockup} 
-                  alt="Telegram мини-приложение для записи" 
-                  className="w-full h-auto rounded-3xl shadow-2xl"
-                />
-              </div>
-            </div>
-
-            {/* Right side - Content */}
-            <div className="space-y-8 text-center lg:text-left">
+            {/* Left side - Content */}
+            <div className="space-y-8 text-center lg:text-left order-2 lg:order-1">
               <div className="flex justify-center lg:justify-start mb-6">
                 <img src={logo} alt="2Minutes" className="h-16 sm:h-20 lg:h-24 w-auto object-contain" />
               </div>
@@ -50,6 +39,17 @@ const Hero = () => {
                 <Button size="lg" variant="outline" className="text-base font-semibold px-8">
                   Узнать больше
                 </Button>
+              </div>
+            </div>
+
+            {/* Right side - Phone mockup */}
+            <div className="flex justify-center lg:justify-end order-1 lg:order-2">
+              <div className="relative w-full max-w-[213px] lg:max-w-[240px]">
+                <img 
+                  src={telegramMockup} 
+                  alt="Telegram мини-приложение для записи" 
+                  className="w-full h-auto rounded-3xl shadow-2xl"
+                />
               </div>
             </div>
           </div>
