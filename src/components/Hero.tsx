@@ -11,15 +11,16 @@ const Hero = () => {
             <img src={logo} alt="2Minutes" className="h-16 sm:h-20 lg:h-24 w-auto object-contain" />
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-            Онлайн-бронирование услуг
-            <span className="block mt-2 bg-clip-text text-transparent" 
+            <span className="block bg-clip-text text-transparent" 
                   style={{ backgroundImage: 'var(--gradient-primary)' }}>
-              в 2 клика
+              Онлайн-записи клиентов
+            </span>
+            <span className="block mt-2">
+              на ваши услуги
             </span>
           </h1>
           <p className="text-xl lg:text-2xl text-muted-foreground max-w-2xl mx-auto">
-            Простой и удобный сервис для записи клиентов через Telegram. 
-            Бесплатные уведомления, управление без звонков и полная автоматизация.
+            Простой и удобный сервис для салонов красоты, барбершопов, мастеров на дому и услуг с фиксированной длительностью. С помощью нашего сервиса вы быстро и недорого организуете запись, автоматизируете коммуникацию с клиентами и мгновенно оповестите их о новых услугах, скидках и акциях. Простой, удобный и выгодный способ управлять бизнесом без лишних затрат и сложностей.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
             <Button 
