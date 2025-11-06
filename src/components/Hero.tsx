@@ -1,5 +1,4 @@
 import logo from "@/assets/logo.png";
-import telegramMockup from "@/assets/telegram-mockup.jpg";
 import { Button } from "./ui/button";
 const Hero = () => {
   return <section className="relative pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden">
@@ -31,19 +30,23 @@ const Hero = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
                 <Button size="lg" className="text-base font-semibold px-8" style={{
                 background: 'var(--gradient-primary)'
-              }}>
-                  Начать бесплатно
+              }} asChild>
+                  <a href="https://t.me/demo_2min_bot" target="_blank" rel="noopener noreferrer">
+                    Демо записи в telegram
+                  </a>
                 </Button>
-                <Button size="lg" variant="outline" className="text-base font-semibold px-8">
-                  Узнать больше
+                <Button size="lg" variant="outline" className="text-base font-semibold px-8" asChild>
+                  <a href="https://app.2minutes.ru/book/demo" target="_blank" rel="noopener noreferrer">
+                    Демо записи по ссылке
+                  </a>
                 </Button>
               </div>
             </div>
 
-            {/* Right side - Phone mockup */}
+            {/* Right side - Logo */}
             <div className="flex justify-center lg:justify-end order-1 lg:order-2">
-              <div className="relative w-full max-w-[213px] lg:max-w-[240px]">
-                <img src={telegramMockup} alt="Telegram мини-приложение для записи" className="w-full h-auto rounded-3xl shadow-2xl" />
+              <div className="relative w-full max-w-[300px]">
+                <img src={logo} alt="2Minutes" className="w-full h-auto object-contain" />
               </div>
             </div>
           </div>
