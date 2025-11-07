@@ -1,0 +1,28 @@
+{
+  "name": "2Minutes - Онлайн-запись клиентов",
+  "short_name": "2Minutes",
+  "description": "Простая и функциональная система on-line записи на услуги. Забудьте о рутине и взаимодействуйте с клиентами удобным для них способом всего за 500 рублей в месяц (на одного мастера).",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4A90E2",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity"],
+  "lang": "ru",
+  "dir": "ltr"
+}
+
