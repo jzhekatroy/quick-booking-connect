@@ -16,10 +16,11 @@ const Hero = () => {
               на ваши услуги
             </span>
           </h1>
-          <p className="text-xl lg:text-2xl text-muted-foreground mx-auto">
-            Простая и функциональная система бронирования заказов в мобильном телефоне. Забудьте о рутине и взаимодействуйте с клиентами удобным для них способом <br />
-            <strong className="font-bold">всего за 500 рублей в месяц (на одного мастера).</strong>
-          </p>
+          <div className="text-xl lg:text-2xl text-muted-foreground mx-auto space-y-2">
+            <p>Простая и функциональная система бронирования заказов в мобильном телефоне.</p>
+            <p>Забудьте о рутине и взаимодействуйте с клиентами удобным для них способом</p>
+            <p><strong className="font-bold">всего за 500 рублей в месяц (на одного мастера).</strong></p>
+          </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
             <Button size="lg" className="text-base font-semibold px-8" style={{
             background: 'var(--gradient-primary)'
