@@ -24,8 +24,10 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
             <Button size="lg" className="text-base font-semibold px-8" style={{
             background: 'var(--gradient-primary)'
-          }}>
-              Начать бесплатно
+          }} asChild>
+              <a href="https://app.2minutes.ru/login" target="_blank" rel="noopener noreferrer">
+                Начать бесплатно
+              </a>
             </Button>
             <Button size="lg" variant="outline" className="text-base font-semibold px-8" asChild>
               <a href="https://t.me/demo_2min_bot" target="_blank" rel="noopener noreferrer">
