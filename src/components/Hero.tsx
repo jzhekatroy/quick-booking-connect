@@ -16,7 +16,7 @@ const Hero = () => {
               на ваши услуги
             </span>
           </h1>
-          <p className="text-xl lg:text-2xl text-muted-foreground max-w-6xl mx-auto">
+          <p className="text-xl lg:text-2xl text-muted-foreground max-w-7xl mx-auto">
             Простая и функциональная система бронирования заказов в мобильном телефоне. Забудьте о рутине и взаимодействуйте с клиентами удобным для них способом <br />
             <strong className="font-bold">всего за 500 рублей в месяц (на одного мастера).</strong>
           </p>
