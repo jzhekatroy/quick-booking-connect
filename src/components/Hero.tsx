@@ -4,7 +4,7 @@ const Hero = () => {
   return <section className="relative pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-accent/5" />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
+        <div className="max-w-6xl mx-auto text-center space-y-8">
           <div className="flex justify-center mb-8">
             <img src={logo} alt="2Minutes" className="h-16 sm:h-20 lg:h-24 w-auto object-contain" />
           </div>
