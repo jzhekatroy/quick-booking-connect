@@ -6,9 +6,9 @@ import FeatureSection from "@/components/FeatureSection";
 import bookingDemo from "@/assets/booking-demo.mp4";
 import appointmentsManagement from "@/assets/appointments-management-new.jpg";
 import notifications from "@/assets/notifications-new.jpg";
-import employeeSchedule from "@/assets/employee-schedule.png";
-import adminDashboard from "@/assets/admin-dashboard.png";
-import analytics from "@/assets/analytics.png";
+import employeeSchedule from "@/assets/41.jpg";
+import adminDashboard from "@/assets/42.png";
+import analytics from "@/assets/43.png";
 import crossPlatform from "@/assets/cross-platform.png";
 
 const Index = () => {
