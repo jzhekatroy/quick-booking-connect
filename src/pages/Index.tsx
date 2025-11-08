@@ -9,7 +9,7 @@ import notifications from "@/assets/notifications-new.jpg";
 import employeeSchedule from "@/assets/41.jpg";
 import adminDashboard from "@/assets/42.png";
 import analytics from "@/assets/43.png";
-import crossPlatform from "@/assets/cross-platform.png";
+
 
 const Index = () => {
   return (
@@ -58,11 +58,6 @@ const Index = () => {
             reverse
           />
 
-          <FeatureSection
-            title="Нет необходимости разрабатывать свое приложение"
-            description="Очень низкий порог вхождения, не нужны специалисты. Все работает через Telegram и МАХ, которые есть у всех, на разных платформах ПК, телефон с разными ОС и даже веб версия."
-            image={crossPlatform}
-          />
         </div>
       </main>
       <Footer />
