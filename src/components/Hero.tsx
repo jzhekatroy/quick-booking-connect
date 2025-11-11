@@ -22,14 +22,14 @@ const Hero = () => {
             <p><strong className="font-bold">всего за 500 рублей в месяц (на одного мастера).</strong></p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <Button size="lg" className="text-base font-semibold px-8" style={{
+            <Button size="lg" className="text-base font-semibold px-8 min-w-[200px]" style={{
             background: 'var(--gradient-primary)'
           }} asChild>
               <a href="https://app.2minutes.ru/login" target="_blank" rel="noopener noreferrer">
                 Начать бесплатно
               </a>
             </Button>
-            <Button size="lg" variant="outline" className="text-base font-semibold px-8" asChild>
+            <Button size="lg" variant="outline" className="text-base font-semibold px-8 min-w-[200px]" asChild>
               <a href="https://t.me/demo_2min_bot" target="_blank" rel="noopener noreferrer">
                 Демонстрация
               </a>
