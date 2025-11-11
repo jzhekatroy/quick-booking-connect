@@ -31,7 +31,7 @@ const Hero = () => {
             </Button>
             <Button size="lg" variant="outline" className="text-base font-semibold px-8" asChild>
               <a href="https://t.me/demo_2min_bot" target="_blank" rel="noopener noreferrer">
-                Попробовать запись
+                Демонстрация
               </a>
             </Button>
           </div>
