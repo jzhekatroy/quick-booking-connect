@@ -21,12 +21,12 @@ const Header = () => {
           
           {/* Desktop buttons */}
           <div className="hidden md:flex items-center gap-3">
-            <Button size="default" variant="outline" className="text-sm font-semibold" asChild>
+            <Button size="default" variant="outline" className="text-sm font-semibold min-w-[180px]" asChild>
               <a href="https://t.me/demo_2min_bot" target="_blank" rel="noopener noreferrer">
                 Демонстрация
               </a>
             </Button>
-            <Button size="default" className="text-sm font-semibold" style={{
+            <Button size="default" className="text-sm font-semibold min-w-[180px]" style={{
               background: 'var(--gradient-primary)'
             }} asChild>
               <a href="https://app.2minutes.ru/login" target="_blank" rel="noopener noreferrer">
