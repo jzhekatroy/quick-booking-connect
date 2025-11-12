@@ -5,12 +5,16 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <h3 className="text-lg font-semibold mb-4">Контакты</h3>
-            <p className="text-muted-foreground">
-              Email: i@2minutes.ru
-            </p>
-            <p className="text-muted-foreground">
-              Telegram: @2minutes_support
-            </p>
+            <div className="grid grid-cols-[max-content_1fr] gap-x-4 gap-y-2">
+              <span className="text-muted-foreground whitespace-nowrap">Email:</span>
+              <a href="mailto:i@2minutes.ru" className="text-primary hover:underline">i@2minutes.ru</a>
+
+              <span className="text-muted-foreground whitespace-nowrap">Telegram канал:</span>
+              <a href="https://t.me/news_2minutes" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">@news_2minutes</a>
+
+              <span className="text-muted-foreground whitespace-nowrap">Поддержка:</span>
+              <a href="https://t.me/help_2minutes" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">@help_2_minutes</a>
+            </div>
           </div>
           <div>
             <h3 className="text-lg font-semibold mb-4">Документы</h3>
