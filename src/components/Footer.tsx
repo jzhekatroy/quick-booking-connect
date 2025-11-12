@@ -13,7 +13,7 @@ const Footer = () => {
               <a href="https://t.me/news_2minutes" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">@news_2minutes</a>
 
               <span className="text-muted-foreground whitespace-nowrap">Поддержка:</span>
-              <a href="https://t.me/help_2minutes" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">@help_2_minutes</a>
+              <a href="https://t.me/help_2minutes" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">@help_2minutes</a>
             </div>
           </div>
           <div>
