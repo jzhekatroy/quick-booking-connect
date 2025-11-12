@@ -21,12 +21,12 @@ const Header = () => {
           
           {/* Desktop buttons */}
           <div className="hidden md:flex items-center gap-3">
-            <Button variant="outline" className="text-sm font-semibold px-4 h-10" asChild>
+            <Button size="default" variant="outline" className="text-sm font-semibold" asChild>
               <a href="https://t.me/demo_2min_bot" target="_blank" rel="noopener noreferrer">
                 Демонстрация
               </a>
             </Button>
-            <Button className="text-sm font-semibold px-4 h-10" style={{
+            <Button size="default" className="text-sm font-semibold" style={{
               background: 'var(--gradient-primary)'
             }} asChild>
               <a href="https://app.2minutes.ru/login" target="_blank" rel="noopener noreferrer">
@@ -45,8 +45,9 @@ const Header = () => {
             <SheetContent side="right" className="w-[300px]">
               <div className="flex flex-col gap-4 mt-8">
                 <Button 
+                  size="default"
                   variant="outline" 
-                  className="w-full text-sm font-semibold h-10" 
+                  className="w-full text-sm font-semibold" 
                   asChild
                   onClick={() => setOpen(false)}
                 >
@@ -55,7 +56,8 @@ const Header = () => {
                   </a>
                 </Button>
                 <Button 
-                  className="w-full text-sm font-semibold h-10" 
+                  size="default"
+                  className="w-full text-sm font-semibold" 
                   style={{
                     background: 'var(--gradient-primary)'
                   }} 
