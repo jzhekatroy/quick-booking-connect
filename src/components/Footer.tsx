@@ -6,6 +6,9 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Контакты</h3>
             <div className="grid grid-cols-[max-content_1fr] gap-x-4 gap-y-2">
+              <span className="text-muted-foreground whitespace-nowrap">Телефон:</span>
+              <a href="tel:+74996660123" className="text-primary hover:underline">+7 (499) 666-01-23</a>
+
               <span className="text-muted-foreground whitespace-nowrap">Email:</span>
               <a href="mailto:i@2minutes.ru" className="text-primary hover:underline">i@2minutes.ru</a>
 
@@ -20,13 +23,18 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Документы</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                <a href="/offer" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                   Оферта
                 </a>
               </li>
               <li>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                   Политика конфиденциальности
+                </a>
+              </li>
+              <li>
+                <a href="/cookie-policy" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                  Использование Cookie
                 </a>
               </li>
               <li>

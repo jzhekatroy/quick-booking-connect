@@ -93,7 +93,14 @@ const FeatureSection = ({ title, description, image, video, reverse = false }: F
                 <h2 className="text-3xl lg:text-4xl font-bold tracking-tight">{title}</h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">{description}</p>
               </div>
-              <div className={`${reverse ? 'lg:order-1' : 'lg:order-2'} flex justify-center`}>
+              <div className={`${reverse ? 'lg:order-1' : 'lg:order-2'} flex justify-center ${
+                (title === 'Простая запись в 3 клика' ||
+                 title === 'Управление записями без звонков' || 
+                 title === 'Бесплатные и безлимитные уведомления клиентам' || 
+                 title === 'Уведомления сотрудникам и просмотр расписания') 
+                  ? 'lg:py-0 py-16' 
+                  : ''
+              }`}>
                 <div style={{ width: video ? '33.33%' : (image && (title === 'Управление записями без звонков' || title === 'Бесплатные и безлимитные уведомления клиентам' || title === 'Уведомления сотрудникам и просмотр расписания') ? '33.33%' : '100%') }}>
                   {video ? (
                     <video 
@@ -102,14 +109,22 @@ const FeatureSection = ({ title, description, image, video, reverse = false }: F
                       loop
                       muted
                       playsInline
-                      className="rounded-3xl w-full h-auto object-contain cursor-pointer hover:opacity-90 transition-opacity"
+                      className={`rounded-3xl w-full h-auto object-contain cursor-pointer hover:opacity-90 transition-opacity ${
+                        title === 'Простая запись в 3 клика' ? 'lg:scale-100 scale-150 origin-center' : ''
+                      }`}
                       onClick={handleVideoClick}
                     />
                   ) : (
                     <img 
                       src={image} 
                       alt={title}
-                      className={`rounded-3xl w-full h-auto object-contain ${image ? 'cursor-pointer hover:opacity-90 transition-opacity' : ''}`}
+                      className={`rounded-3xl w-full h-auto object-contain ${image ? 'cursor-pointer hover:opacity-90 transition-opacity' : ''} ${
+                        (title === 'Управление записями без звонков' || 
+                         title === 'Бесплатные и безлимитные уведомления клиентам' || 
+                         title === 'Уведомления сотрудникам и просмотр расписания') 
+                          ? 'lg:scale-100 scale-150 origin-center' 
+                          : ''
+                      }`}
                       onClick={handleImageClick}
                     />
                   )}

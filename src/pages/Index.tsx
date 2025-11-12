@@ -3,12 +3,12 @@ import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import FeatureSection from "@/components/FeatureSection";
 
-import bookingDemo from "@/assets/booking-demo.mp4";
-import appointmentsManagement from "@/assets/appointments-management-new.jpg";
+import bookingDemo from "@/assets/67.MP4";
+import appointmentsManagement from "@/assets/66.jpg";
 import notifications from "@/assets/notifications-new.jpg";
 import employeeSchedule from "@/assets/41.jpg";
 import adminDashboard from "@/assets/42.png";
-import analytics from "@/assets/43.png";
+import analytics from "@/assets/55.png";
 
 
 const Index = () => {
