@@ -118,6 +118,7 @@ const FeatureSection = ({ title, description, image, video, reverse = false }: F
                       loop
                       muted
                       playsInline
+                      preload="metadata"
                       className={`rounded-3xl w-full h-auto object-contain cursor-pointer hover:opacity-90 transition-opacity`}
                       onClick={handleVideoClick}
                     />
@@ -125,6 +126,8 @@ const FeatureSection = ({ title, description, image, video, reverse = false }: F
                     <img 
                       src={image} 
                       alt={title}
+                      loading="lazy"
+                      decoding="async"
                       className={`rounded-3xl w-full h-auto object-contain ${image ? 'cursor-pointer hover:opacity-90 transition-opacity' : ''}`}
                       onClick={handleImageClick}
                     />

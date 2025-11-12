@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import FeatureSection from "@/components/FeatureSection";
+import { Helmet } from "react-helmet-async";
 
 import bookingDemo from "@/assets/67.MP4";
 import appointmentsManagement from "@/assets/66.jpg";
@@ -14,6 +15,16 @@ import analytics from "@/assets/55.png";
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>2Minutes — Онлайн-запись клиентов за 2 минуты</title>
+        <meta name="description" content="Простая система онлайн-записи, уведомления в Telegram, управление расписанием, аналитика. 30 дней бесплатно." />
+        <link rel="canonical" href="https://2minutes.ru/" />
+        <meta property="og:title" content="2Minutes — Онлайн-запись клиентов за 2 минуты" />
+        <meta property="og:description" content="Онлайн-запись, уведомления, управление расписанием, аналитика. 30 дней бесплатно." />
+        <meta property="og:url" content="https://2minutes.ru/" />
+        <meta property="og:image" content="https://2minutes.ru/icon.png" />
+        <meta name="twitter:image" content="https://2minutes.ru/icon.png" />
+      </Helmet>
       <Header />
       <main>
         <Hero />

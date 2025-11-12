@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { Helmet } from "react-helmet-async";
 
 const Offer = () => {
   useEffect(() => {
@@ -9,6 +10,11 @@ const Offer = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Публичная оферта — 2Minutes</title>
+        <meta name="description" content="Публичная оферта сервиса 2Minutes: условия, тарифы, порядок оплаты и расторжения, реквизиты оператора." />
+        <link rel="canonical" href="https://2minutes.ru/offer" />
+      </Helmet>
       <Header />
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">
         <div className="max-w-4xl mx-auto">
