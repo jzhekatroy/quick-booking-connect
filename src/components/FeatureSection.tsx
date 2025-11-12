@@ -27,7 +27,6 @@ const FeatureSection = ({ title, description, image, video, reverse = false }: F
 
   useEffect(() => {
     if (isImageModalOpen || isVideoModalOpen) {
-      // Закрытие по Escape
       const handleEscape = (e: KeyboardEvent) => {
         if (e.key === 'Escape') {
           setIsImageModalOpen(false);
@@ -35,7 +34,6 @@ const FeatureSection = ({ title, description, image, video, reverse = false }: F
         }
       };
       
-      // Блокируем скролл страницы при открытом модальном окне
       document.body.style.overflow = 'hidden';
       
       document.addEventListener('keydown', handleEscape);
@@ -68,7 +66,6 @@ const FeatureSection = ({ title, description, image, video, reverse = false }: F
   };
 
   const handleModalImageClick = (e: React.MouseEvent) => {
-    // На мобильных устройствах закрываем при клике на изображение
     if (isMobile) {
       e.stopPropagation();
       handleCloseImageModal();
@@ -76,12 +73,24 @@ const FeatureSection = ({ title, description, image, video, reverse = false }: F
   };
 
   const handleModalVideoClick = (e: React.MouseEvent) => {
-    // На мобильных устройствах закрываем при клике на видео
     if (isMobile) {
       e.stopPropagation();
       handleCloseVideoModal();
     }
   };
+
+  // Адаптивная ширина контейнера медиа: 100% на мобилке, 33.33% на десктопе для нужных секций
+  const shouldNarrow = (
+    (title === 'Простая запись в 3 клика' && !!video) ||
+    (image && (
+      title === 'Управление записями без звонков' ||
+      title === 'Бесплатные и безлимитные уведомления клиентам' ||
+      title === 'Уведомления сотрудникам и просмотр расписания'
+    ))
+  );
+  const containerWidth = shouldNarrow
+    ? (isMobile ? 'clamp(240px, 80vw, 320px)' : '33.33%')
+    : '100%';
 
   return (
     <>
@@ -101,7 +110,7 @@ const FeatureSection = ({ title, description, image, video, reverse = false }: F
                   ? 'lg:py-0 py-16' 
                   : ''
               }`}>
-                <div style={{ width: video ? '33.33%' : (image && (title === 'Управление записями без звонков' || title === 'Бесплатные и безлимитные уведомления клиентам' || title === 'Уведомления сотрудникам и просмотр расписания') ? '33.33%' : '100%') }}>
+                <div style={{ width: containerWidth }}>
                   {video ? (
                     <video 
                       src={video}
@@ -109,22 +118,14 @@ const FeatureSection = ({ title, description, image, video, reverse = false }: F
                       loop
                       muted
                       playsInline
-                      className={`rounded-3xl w-full h-auto object-contain cursor-pointer hover:opacity-90 transition-opacity ${
-                        title === 'Простая запись в 3 клика' ? 'lg:scale-100 scale-150 origin-center' : ''
-                      }`}
+                      className={`rounded-3xl w-full h-auto object-contain cursor-pointer hover:opacity-90 transition-opacity`}
                       onClick={handleVideoClick}
                     />
                   ) : (
                     <img 
                       src={image} 
                       alt={title}
-                      className={`rounded-3xl w-full h-auto object-contain ${image ? 'cursor-pointer hover:opacity-90 transition-opacity' : ''} ${
-                        (title === 'Управление записями без звонков' || 
-                         title === 'Бесплатные и безлимитные уведомления клиентам' || 
-                         title === 'Уведомления сотрудникам и просмотр расписания') 
-                          ? 'lg:scale-100 scale-150 origin-center' 
-                          : ''
-                      }`}
+                      className={`rounded-3xl w-full h-auto object-contain ${image ? 'cursor-pointer hover:opacity-90 transition-opacity' : ''}`}
                       onClick={handleImageClick}
                     />
                   )}
