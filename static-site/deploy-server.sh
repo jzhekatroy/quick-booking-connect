@@ -55,6 +55,21 @@ fi
 
 # Копирование файлов
 echo -e "${YELLOW}📤 Копирование файлов...${NC}"
+
+# Удаляем старую папку dist если существует
+if [ -d "$DEPLOY_DIR/dist" ]; then
+    echo -e "${YELLOW}  Удаление старой папки dist...${NC}"
+    rm -rf "$DEPLOY_DIR/dist"
+fi
+
+# Удаляем другие старые файлы React проекта
+if [ -d "$DEPLOY_DIR/assets" ] && [ -f "$DEPLOY_DIR/index.html" ] && ! grep -q "2Minutes — Онлайн-запись" "$DEPLOY_DIR/index.html" 2>/dev/null; then
+    echo -e "${YELLOW}  Очистка старых файлов React проекта...${NC}"
+    find "$DEPLOY_DIR" -maxdepth 1 -type f -name "*.html" -delete
+    find "$DEPLOY_DIR" -maxdepth 1 -type f -name "*.js" -delete
+    find "$DEPLOY_DIR" -maxdepth 1 -type f -name "*.css" -delete
+fi
+
 rsync -av --delete \
     --exclude='.git' \
     --exclude='node_modules' \
@@ -62,9 +77,28 @@ rsync -av --delete \
     --exclude='package.json' \
     --exclude='README.md' \
     --exclude='.gitignore' \
+    --exclude='SERVER_DEPLOY.md' \
+    --exclude='angie-config.conf' \
     "repo/static-site/" "$DEPLOY_DIR/"
 
 echo -e "${GREEN}✓ Файлы скопированы${NC}"
+echo ""
+
+# Обновление конфигурации Angie
+echo -e "${YELLOW}⚙️  Обновление конфигурации Angie...${NC}"
+if [ -f "repo/static-site/angie-config.conf" ]; then
+    ANGIE_CONFIG="/etc/angie/http.d/2minutes.ru.conf"
+    if [ -f "$ANGIE_CONFIG" ]; then
+        cp "repo/static-site/angie-config.conf" "$ANGIE_CONFIG"
+        echo -e "${GREEN}✓ Конфигурация Angie обновлена${NC}"
+        echo -e "${YELLOW}  Не забудьте перезагрузить Angie: sudo systemctl reload angie${NC}"
+    else
+        echo -e "${YELLOW}⚠️  Конфигурация Angie не найдена: $ANGIE_CONFIG${NC}"
+        echo -e "${YELLOW}  Скопируйте angie-config.conf вручную${NC}"
+    fi
+else
+    echo -e "${YELLOW}⚠️  Файл конфигурации angie-config.conf не найден${NC}"
+fi
 echo ""
 
 # Установка прав
