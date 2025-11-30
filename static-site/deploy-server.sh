@@ -29,10 +29,15 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
-# Создание директории для деплоя
-echo -e "${YELLOW}📁 Создание директории...${NC}"
-mkdir -p "$DEPLOY_DIR"
-echo -e "${GREEN}✓ Директория создана: $DEPLOY_DIR${NC}"
+# Создание директории для деплоя (если не существует)
+echo -e "${YELLOW}📁 Проверка директории...${NC}"
+if [ -d "$DEPLOY_DIR" ]; then
+    echo -e "${YELLOW}⚠️  Директория уже существует: $DEPLOY_DIR${NC}"
+    echo -e "${YELLOW}   Существующие файлы будут заменены${NC}"
+else
+    mkdir -p "$DEPLOY_DIR"
+    echo -e "${GREEN}✓ Директория создана: $DEPLOY_DIR${NC}"
+fi
 echo ""
 
 # Клонирование репозитория
