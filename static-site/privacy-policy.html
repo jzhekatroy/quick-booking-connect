@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Политика конфиденциальности сервиса 2Minutes">
+  <title>Политика конфиденциальности — 2Minutes</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%235DADE2'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-weight='700' font-size='18' fill='white'%3E2M%3C/text%3E%3C/svg%3E">
+  <style>
+    :root {
+      --color-primary: #5DADE2;
+      --color-primary-dark: #2E86AB;
+      --color-primary-light: #AED6F1;
+      --color-text: #1A1A1A;
+      --color-text-secondary: #4A5568;
+      --color-bg: #FFFFFF;
+      --color-border: #E2E8F0;
+      --font-size-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --font-size-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+      --font-size-lg: clamp(1.125rem, 1rem + 0.6vw, 1.25rem);
+      --font-size-2xl: clamp(1.5rem, 1.2rem + 1.5vw, 2rem);
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2rem;
+      --space-2xl: 3rem;
+      --space-3xl: 4rem;
+      --radius-md: 0.5rem;
+      --transition-fast: 150ms ease;
+      --transition-base: 250ms ease;
+      --header-height: 4rem;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      font-size: var(--font-size-base);
+      line-height: 1.7;
+      color: var(--color-text);
+      background-color: var(--color-bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--color-primary-dark);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+
+    a:hover {
+      color: var(--color-primary);
+    }
+
+    a:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-lg);
+    }
+
+    /* Header */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      height: var(--header-height);
+      background: var(--color-bg);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .header__logo {
+      display: flex;
+      align-items: center;
+      height: 2.5rem;
+    }
+
+    .header__logo img {
+      height: 100%;
+      width: auto;
+    }
+
+    .header__back {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-sm);
+      color: var(--color-text-secondary);
+      font-size: var(--font-size-sm);
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--radius-md);
+      transition: all var(--transition-fast);
+    }
+
+    .header__back:hover {
+      background-color: rgba(93, 173, 226, 0.1);
+      color: var(--color-primary-dark);
+    }
+
+    .header__back-icon {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Main Content */
+    .page {
+      padding-top: calc(var(--header-height) + var(--space-2xl));
+      padding-bottom: var(--space-3xl);
+    }
+
+    .page__title {
+      font-size: var(--font-size-2xl);
+      font-weight: 700;
+      margin-bottom: var(--space-2xl);
+      color: var(--color-text);
+    }
+
+    .page__content {
+      color: var(--color-text-secondary);
+    }
+
+    .page__content h2 {
+      font-size: var(--font-size-lg);
+      font-weight: 600;
+      color: var(--color-text);
+      margin-top: var(--space-xl);
+      margin-bottom: var(--space-md);
+    }
+
+    .page__content h3 {
+      font-size: var(--font-size-base);
+      font-weight: 600;
+      color: var(--color-text);
+      margin-top: var(--space-lg);
+      margin-bottom: var(--space-sm);
+    }
+
+    .page__content p {
+      margin-bottom: var(--space-md);
+    }
+
+    .page__content ul,
+    .page__content ol {
+      margin-bottom: var(--space-md);
+      padding-left: var(--space-xl);
+    }
+
+    .page__content li {
+      margin-bottom: var(--space-sm);
+    }
+
+    .page__content strong {
+      color: var(--color-text);
+    }
+
+    /* Footer */
+    .footer {
+      background-color: var(--color-text);
+      color: white;
+      padding: var(--space-xl) 0;
+      text-align: center;
+    }
+
+    .footer__copyright {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: var(--font-size-sm);
+    }
+  </style>
+</head>
+<body>
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+      (function(m,e,t,r,i,k,a){
+          m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+          m[i].l=1*new Date();
+          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+      })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=105272338', 'ym');
+      ym(105272338, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/105272338" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
+
+  <!-- Top.Mail.Ru counter -->
+  <script type="text/javascript">
+  var _tmr = window._tmr || (window._tmr = []);
+  _tmr.push({id: "3722344", type: "pageView", start: (new Date()).getTime()});
+  (function (d, w, id) {
+    if (d.getElementById(id)) return;
+    var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
+    ts.src = "https://top-fwz1.mail.ru/js/code.js";
+    var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+    if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+  })(document, window, "tmr-code");
+  </script>
+  <noscript><div><img src="https://top-fwz1.mail.ru/counter?id=3722344;js=na" style="position:absolute;left:-9999px;" alt="Top.Mail.Ru" /></div></noscript>
+  <!-- /Top.Mail.Ru counter -->
+
+  <header class="header" role="banner">
+    <div class="container header__inner">
+      <a href="index.html" class="header__logo" aria-label="2Minutes — На главную">
+        <img src="assets/logo.png" alt="2Minutes" width="120" height="40">
+      </a>
+      <a href="index.html" class="header__back">
+        <svg class="header__back-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        На главную
+      </a>
+    </div>
+  </header>
+
+  <main class="page" role="main">
+    <div class="container">
+      <h1 class="page__title">Политика конфиденциальности</h1>
+      
+      <div class="page__content">
+        <h2>1. Общие положения</h2>
+        <p>1.1. Настоящая Политика конфиденциальности (далее — «Политика») разработана в соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных» и регулирует порядок обработки и защиты персональных данных пользователей сервиса онлайн-бронирования (далее — «Пользователь»).</p>
+        <p>1.2. Оператор сервиса — Индивидуальный предприниматель Троянов Евгений Григорьевич, контактный телефон: <a href="tel:+74996660123">+7 (499) 666-01-23</a>.</p>
+        
+        <h2>2. Собираемые данные</h2>
+        <p>2.1. Сервис собирает следующие персональные данные Пользователей: имя, адрес электронной почты (email).</p>
+        <p>2.2. Данные собираются при регистрации на сайте через формы регистрации.</p>
+        
+        <h2>3. Цели обработки данных</h2>
+        <p>3.1. Обработка персональных данных осуществляется с целью:</p>
+        <ul>
+          <li>регистрации Пользователя для доступа к сервису;</li>
+          <li>связи с Пользователем (уведомления, рассылки, информирование);</li>
+          <li>смены пароля и обеспечения безопасности аккаунта.</li>
+        </ul>
+        
+        <h2>4. Законные основания обработки</h2>
+        <p>4.1. Обработка персональных данных производится с согласия Пользователя, выраженного при регистрации и использовании сервиса.</p>
+        
+        <h2>5. Срок хранения данных</h2>
+        <p>5.1. Персональные данные хранятся не дольше, чем это необходимо для достижения целей обработки, но не менее 3 лет после окончания использования сервиса.</p>
+        <p>5.2. По истечении этого срока данные будут уничтожены или обезличены.</p>
+        
+        <h2>6. Защита данных</h2>
+        <p>6.1. Оператор принимает необходимые организационные и технические меры для защиты персональных данных от несанкционированного доступа, изменения, раскрытия или уничтожения.</p>
+        <p>6.2. Передача данных третьим лицам не осуществляется.</p>
+        
+        <h2>7. Права Пользователя</h2>
+        <p>7.1. Пользователь имеет право:</p>
+        <ul>
+          <li>получать информацию о своих персональных данных и целях их обработки;</li>
+          <li>требовать уточнения, блокировки или удаления данных;</li>
+          <li>отзывать согласие на обработку персональных данных;</li>
+          <li>обращаться с жалобами на обработку данных в уполномоченные органы.</li>
+        </ul>
+        
+        <h2>8. Контактная информация</h2>
+        <p>8.1. По всем вопросам, связанным с обработкой персональных данных, Пользователь может обращаться к Оператору по телефону <a href="tel:+74996660123">+7 (499) 666-01-23</a>.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <p class="footer__copyright">© 2025 2Minutes. Все права защищены.</p>
+    </div>
+  </footer>
+</body>
+</html>
+

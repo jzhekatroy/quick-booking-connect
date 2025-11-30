@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="2Minutes — современный сервис онлайн-бронирования для вашего бизнеса. Простая запись клиентов за 500 рублей в месяц.">
+  <title>2Minutes — Онлайн-запись клиентов на ваши услуги</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%235DADE2'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-weight='700' font-size='18' fill='white'%3E2M%3C/text%3E%3C/svg%3E">
+  <style>
+    /* ===== CSS Variables ===== */
+    :root {
+      --color-primary: #5DADE2;
+      --color-primary-dark: #2E86AB;
+      --color-primary-light: #AED6F1;
+      --color-primary-ultra-light: #EBF5FB;
+      --color-text: #1A1A1A;
+      --color-text-secondary: #4A5568;
+      --color-text-muted: #718096;
+      --color-bg: #FFFFFF;
+      --color-bg-alt: #F7FAFC;
+      --color-border: #E2E8F0;
+      --color-glass: rgba(255, 255, 255, 0.7);
+      
+      --font-size-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --font-size-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --font-size-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+      --font-size-lg: clamp(1.125rem, 1rem + 0.6vw, 1.25rem);
+      --font-size-2xl: clamp(1.5rem, 1.2rem + 1.5vw, 2rem);
+      --font-size-3xl: clamp(1.875rem, 1.5rem + 2vw, 2.5rem);
+      
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2rem;
+      --space-2xl: 3rem;
+      --space-3xl: 4rem;
+      --space-4xl: 6rem;
+      
+      --radius-md: 0.5rem;
+      --radius-xl: 1.5rem;
+      
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+      --shadow-glow: 0 0 40px rgba(93, 173, 226, 0.15);
+      
+      --transition-fast: 150ms ease;
+      --transition-base: 250ms ease;
+      --transition-slow: 400ms ease;
+      
+      --header-height: 4rem;
+    }
+
+    /* ===== Reset & Base ===== */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      font-size: var(--font-size-base);
+      line-height: 1.6;
+      color: var(--color-text);
+      background-color: var(--color-bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      color: var(--color-primary-dark);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+
+    a:hover {
+      color: var(--color-primary);
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      html {
+        scroll-behavior: auto;
+      }
+    }
+
+    /* ===== Layout ===== */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-lg);
+    }
+
+    /* ===== Animations ===== */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity var(--transition-slow), transform var(--transition-slow);
+    }
+
+    .animate-on-scroll--visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .animate-on-scroll--left {
+      transform: translateX(-30px);
+    }
+
+    .animate-on-scroll--right {
+      transform: translateX(30px);
+    }
+
+    .animate-on-scroll--left.animate-on-scroll--visible,
+    .animate-on-scroll--right.animate-on-scroll--visible {
+      transform: translateX(0);
+    }
+
+    /* ===== Buttons ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      padding: var(--space-md) var(--space-xl);
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+      border-radius: var(--radius-md);
+      transition: all var(--transition-base);
+      white-space: nowrap;
+    }
+
+    .btn--primary {
+      background-color: var(--color-primary);
+      color: white;
+      box-shadow: 0 4px 14px rgba(93, 173, 226, 0.4);
+    }
+
+    .btn--primary:hover {
+      background-color: var(--color-primary-dark);
+      color: white;
+    }
+
+    .btn--secondary {
+      background-color: transparent;
+      color: var(--color-text);
+      border: 1px solid var(--color-border);
+    }
+
+    .btn--secondary:hover {
+      background-color: var(--color-primary-ultra-light);
+      border-color: var(--color-primary-light);
+      color: var(--color-primary-dark);
+    }
+
+    .btn--small {
+      padding: var(--space-sm) var(--space-md);
+      font-size: var(--font-size-xs);
+    }
+
+    /* ===== Header ===== */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      height: var(--header-height);
+      transition: background var(--transition-base), box-shadow var(--transition-base);
+    }
+
+    .header--scrolled {
+      background: var(--color-glass);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .header__logo {
+      display: flex;
+      align-items: center;
+      height: 2.5rem;
+    }
+
+    .header__logo img {
+      height: 100%;
+      width: auto;
+    }
+
+    .header__actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+    }
+
+    .header__actions .btn {
+      min-width: 140px;
+    }
+
+    /* ===== Mobile Menu ===== */
+    .header__burger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .header__burger-line {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background-color: var(--color-text);
+      border-radius: 1px;
+      transition: transform var(--transition-base), opacity var(--transition-base);
+    }
+
+    .header__burger-line:nth-child(1) {
+      transform: translateY(-6px);
+    }
+
+    .header__burger-line:nth-child(3) {
+      transform: translateY(6px);
+    }
+
+    .header__burger--open .header__burger-line:nth-child(1) {
+      transform: translateY(0) rotate(45deg);
+    }
+
+    .header__burger--open .header__burger-line:nth-child(2) {
+      opacity: 0;
+    }
+
+    .header__burger--open .header__burger-line:nth-child(3) {
+      transform: translateY(0) rotate(-45deg);
+    }
+
+    .header__mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--header-height);
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #FFFFFF;
+      padding: var(--space-xl);
+      flex-direction: column;
+      gap: var(--space-md);
+      z-index: 999;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity var(--transition-base), transform var(--transition-base);
+      pointer-events: none;
+    }
+
+    .header__mobile-menu--open {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .header__mobile-menu .btn {
+      width: 100%;
+      justify-content: center;
+      padding: var(--space-lg);
+      font-size: var(--font-size-base);
+    }
+
+    @media (max-width: 640px) {
+      .header__actions {
+        display: none;
+      }
+
+      .header__burger {
+        display: flex;
+      }
+
+      .header__mobile-menu {
+        display: flex;
+      }
+
+      body.menu-open {
+        overflow: hidden;
+      }
+
+      body.menu-open .header {
+        background: #FFFFFF;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+      }
+    }
+
+    /* ===== Hero Section ===== */
+    .hero {
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding-top: calc(var(--header-height) + var(--space-2xl));
+      padding-bottom: var(--space-3xl);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 80%;
+      height: 120%;
+      background: radial-gradient(ellipse at center, rgba(93, 173, 226, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--color-border), transparent);
+    }
+
+    .hero__inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero__logo {
+      width: 330px;
+      margin-bottom: var(--space-xl);
+    }
+
+    .hero__title {
+      font-size: clamp(1.75rem, 1.4rem + 2.5vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: var(--space-lg);
+    }
+
+    .hero__title-accent {
+      color: var(--color-primary);
+    }
+
+    .hero__description {
+      font-size: clamp(1.125rem, 1rem + 0.72vw, 1.5rem);
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-2xl);
+    }
+
+    .hero__price {
+      color: var(--color-text);
+      font-weight: 700;
+    }
+
+    .hero__price-value,
+    .highlight-marker {
+      color: white;
+      background-color: var(--color-primary);
+      padding: 0.1em 0.3em;
+      border-radius: 0.2em;
+      font-weight: 700;
+    }
+
+    a.highlight-marker:hover {
+      color: white;
+    }
+
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      justify-content: center;
+    }
+
+    .hero__actions .btn {
+      padding: 0.6rem 1.2rem;
+      font-size: clamp(0.9rem, 0.85rem + 0.3vw, 1.05rem);
+      min-width: 180px;
+    }
+
+    @media (max-width: 640px) {
+      .hero__actions {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .hero__actions .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    /* ===== Sections ===== */
+    .section {
+      padding: var(--space-4xl) 0;
+      position: relative;
+    }
+
+    .section--alt {
+      background-color: var(--color-bg-alt);
+    }
+
+    .section__header {
+      text-align: center;
+      margin-bottom: var(--space-3xl);
+    }
+
+    .section__title {
+      font-size: var(--font-size-3xl);
+      font-weight: 700;
+      margin-bottom: var(--space-md);
+    }
+
+    .section__subtitle {
+      font-size: var(--font-size-lg);
+      color: var(--color-text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ===== Feature Block ===== */
+    .feature {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3xl);
+      align-items: center;
+    }
+
+    .feature--reverse {
+      direction: rtl;
+    }
+
+    .feature--reverse > * {
+      direction: ltr;
+    }
+
+    .feature__content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+
+    .feature__title {
+      font-size: var(--font-size-2xl);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .feature__text {
+      color: var(--color-text-secondary);
+      line-height: 1.8;
+    }
+
+    .feature__image-wrapper {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg), var(--shadow-glow);
+    }
+
+    .feature__image-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-xl);
+      padding: 1px;
+      background: linear-gradient(135deg, var(--color-primary-light), transparent 50%, var(--color-primary-light));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    .feature__image {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      object-position: top;
+      background-color: var(--color-bg-alt);
+    }
+
+    .feature__placeholder {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, var(--color-primary-ultra-light), var(--color-bg-alt));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-md);
+      color: var(--color-text-muted);
+    }
+
+    .feature__placeholder-icon {
+      width: 64px;
+      height: 64px;
+      opacity: 0.5;
+    }
+
+    @media (max-width: 900px) {
+      .feature {
+        grid-template-columns: 1fr;
+        gap: var(--space-2xl);
+      }
+      .feature--reverse {
+        direction: ltr;
+      }
+    }
+
+    /* ===== FAQ Section ===== */
+    .faq {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq__item {
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .faq__button {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-lg);
+      padding: var(--space-lg) 0;
+      text-align: left;
+      font-size: var(--font-size-lg);
+      font-weight: 600;
+      color: var(--color-text);
+      transition: color var(--transition-fast);
+    }
+
+    .faq__button:hover {
+      color: var(--color-primary-dark);
+    }
+
+    .faq__icon {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      color: var(--color-primary);
+      transition: transform var(--transition-base);
+    }
+
+    .faq__item--open .faq__icon {
+      transform: rotate(180deg);
+    }
+
+    .faq__answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height var(--transition-slow), opacity var(--transition-base);
+      opacity: 0;
+    }
+
+    .faq__item--open .faq__answer {
+      opacity: 1;
+    }
+
+    .faq__answer-inner {
+      padding-bottom: var(--space-lg);
+      color: var(--color-text-secondary);
+      line-height: 1.8;
+    }
+
+    /* ===== Footer ===== */
+    .footer {
+      background-color: var(--color-text);
+      color: white;
+      padding: var(--space-3xl) 0 var(--space-xl);
+    }
+
+    .footer__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-2xl);
+      margin-bottom: var(--space-2xl);
+    }
+
+    .footer__column-title {
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+      color: var(--color-primary-light);
+      margin-bottom: var(--space-md);
+    }
+
+    .footer__list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .footer__link {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: var(--font-size-sm);
+      transition: color var(--transition-fast);
+    }
+
+    .footer__link:hover {
+      color: white;
+    }
+
+    .footer__contacts {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .footer__contact-row {
+      display: flex;
+    }
+
+    .footer__contact-row dt {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: var(--font-size-sm);
+      white-space: nowrap;
+      min-width: 140px;
+    }
+
+    .footer__contact-row dd {
+      margin: 0;
+    }
+
+    .footer__text {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: var(--font-size-sm);
+      line-height: 1.6;
+    }
+
+    .footer__bottom {
+      padding-top: var(--space-xl);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+    }
+
+    .footer__copyright {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: var(--font-size-sm);
+    }
+
+    @media (max-width: 768px) {
+      .footer__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-xl);
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+      (function(m,e,t,r,i,k,a){
+          m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+          m[i].l=1*new Date();
+          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+      })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=105272338', 'ym');
+      ym(105272338, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/105272338" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
+
+  <!-- Top.Mail.Ru counter -->
+  <script type="text/javascript">
+  var _tmr = window._tmr || (window._tmr = []);
+  _tmr.push({id: "3722344", type: "pageView", start: (new Date()).getTime()});
+  (function (d, w, id) {
+    if (d.getElementById(id)) return;
+    var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
+    ts.src = "https://top-fwz1.mail.ru/js/code.js";
+    var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+    if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+  })(document, window, "tmr-code");
+  </script>
+  <noscript><div><img src="https://top-fwz1.mail.ru/counter?id=3722344;js=na" style="position:absolute;left:-9999px;" alt="Top.Mail.Ru" /></div></noscript>
+  <!-- /Top.Mail.Ru counter -->
+
+  <!-- Header -->
+  <header class="header" role="banner">
+    <div class="container header__inner">
+      <a href="#" class="header__logo" aria-label="2Minutes — На главную">
+        <img src="assets/logo.png" alt="2Minutes" width="120" height="40">
+      </a>
+      <nav class="header__actions" role="navigation" aria-label="Основная навигация">
+        <a href="https://app.2minutes.ru/book/demo" target="_blank" rel="noopener noreferrer" class="btn btn--secondary btn--small">Демонстрация</a>
+        <a href="https://app.2minutes.ru/login" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--small">Личный кабинет</a>
+      </nav>
+      <button class="header__burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="header__burger-line"></span>
+        <span class="header__burger-line"></span>
+        <span class="header__burger-line"></span>
+      </button>
+    </div>
+    <nav id="mobile-menu" class="header__mobile-menu" role="navigation" aria-label="Мобильная навигация">
+      <a href="https://app.2minutes.ru/book/demo" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">Демонстрация</a>
+      <a href="https://app.2minutes.ru/login" target="_blank" rel="noopener noreferrer" class="btn btn--primary">Личный кабинет</a>
+    </nav>
+  </header>
+
+  <main role="main">
+    <!-- Hero Section -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero__inner">
+        <img src="assets/logo.png" alt="" class="hero__logo" aria-hidden="true">
+        <h1 id="hero-title" class="hero__title animate-on-scroll">
+          <span class="hero__title-accent">Онлайн-запись клиентов</span><br>на&nbsp;ваши услуги
+        </h1>
+        <p class="hero__description animate-on-scroll">
+          Простая и функциональная система приема заказов в мобильном телефоне.<br>
+          Взаимодействуйте с клиентами через любые мессенджеры без ограничений<br>
+          <strong class="hero__price">всего за <span class="hero__price-value">500 рублей в месяц</span> (на одного мастера).</strong>
+        </p>
+        <div class="hero__actions animate-on-scroll">
+          <a href="https://app.2minutes.ru/book/demo" target="_blank" rel="noopener noreferrer" class="btn btn--secondary btn--small">Демонстрация</a>
+          <a href="https://app.2minutes.ru/login" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--small">Личный кабинет</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature 1: Simple Booking -->
+    <section class="section" aria-labelledby="feature-1-title">
+      <div class="container">
+        <div class="feature">
+          <div class="feature__image-wrapper">
+            <img src="assets/screenshots/widget.jpg" alt="Скриншот виджета бронирования" class="feature__image">
+          </div>
+          <div class="feature__content animate-on-scroll animate-on-scroll--right">
+            <h2 id="feature-1-title" class="feature__title">Простая запись клиента в&nbsp;3&nbsp;клика</h2>
+            <p class="feature__text">
+              Очень простая механика работы виджета — клиент выбирает услугу, мастера и время. Работайте с ним как с полноценным сайтом, добавьте в свой существующий сайт или интегрируйте в Telegram и MAX в качестве встроенного приложения. При необходимости автоматически перенесем настройки Вашей существующей системы бронирования из YClients и DIKIDI. <span class="highlight-marker">Используйте виджет как свой сайт</span>, с описанием всех услуг и функционалом мгновенного заказа.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature 2: Notifications -->
+    <section class="section section--alt" aria-labelledby="feature-2-title">
+      <div class="container">
+        <div class="feature feature--reverse">
+          <div class="feature__image-wrapper">
+            <img src="assets/screenshots/notifications.jpg" alt="Скриншот уведомлений клиентам в Telegram" class="feature__image">
+          </div>
+          <div class="feature__content animate-on-scroll animate-on-scroll--left">
+            <h2 id="feature-2-title" class="feature__title">Бесплатные и безлимитные уведомления</h2>
+            <p class="feature__text">
+              Система автоматически отправляет подтверждение записи, напоминания о визите и рассылки с акциями. Отправляйте сколько угодно сообщений без дополнительной платы — всё уже включено в тариф. Отправляйте уведомления в Telegram, WhatsApp и MAX, <span class="highlight-marker">безлимитно и всегда бесплатно</span>. Любые действия с заказами фиксируются в удобных для Вас и Ваших клиентов мессенджерах.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature 3: Staff Notifications -->
+    <section class="section" aria-labelledby="feature-3-title">
+      <div class="container">
+        <div class="feature">
+          <div class="feature__image-wrapper">
+            <img src="assets/screenshots/staff-notifications.jpg" alt="Скриншот уведомлений сотрудникам" class="feature__image">
+          </div>
+          <div class="feature__content animate-on-scroll animate-on-scroll--right">
+            <h2 id="feature-3-title" class="feature__title">Уведомления сотрудникам и&nbsp;удобный просмотр расписания</h2>
+            <p class="feature__text">
+              Мастера, к которым записались клиенты, получают мгновенные уведомления о новых записях и изменениях в их расписании прямо в Telegram или MAX, а также напоминания о том, что скоро начинается визит клиента. Сотрудники могут в любой момент открыть в мобильном телефоне свой график на день, неделю или месяц и видеть все брони клиентов, заказанные услуги и время визитов. <span class="highlight-marker">Всё под рукой</span>, обновляется автоматически, всегда актуально.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature 4: Admin Panel -->
+    <section class="section section--alt" aria-labelledby="feature-4-title">
+      <div class="container">
+        <div class="feature feature--reverse">
+          <div class="feature__image-wrapper">
+            <img src="assets/screenshots/admin-panel.jpg" alt="Скриншот личного кабинета администратора" class="feature__image">
+          </div>
+          <div class="feature__content animate-on-scroll animate-on-scroll--left">
+            <h2 id="feature-4-title" class="feature__title">Рабочее место администратора</h2>
+            <p class="feature__text">
+              Удобный интерфейс для управления записями, клиентами и расписанием. Детальная настройка услуг, доступных к бронированию, группировки предложений, гибкое управление клиентскими уведомлениями, настройка информирования мастеров о запланированных заказах. Вся информация в одном месте <span class="highlight-marker">в очень удобном формате</span>, доступ с любого устройства.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature 5: Analytics -->
+    <section class="section" aria-labelledby="feature-5-title">
+      <div class="container">
+        <div class="feature">
+          <div class="feature__image-wrapper">
+            <img src="assets/screenshots/analytics.jpg" alt="Скриншот страницы аналитики" class="feature__image">
+          </div>
+          <div class="feature__content animate-on-scroll animate-on-scroll--right">
+            <h2 id="feature-5-title" class="feature__title">Гибкая аналитика</h2>
+            <p class="feature__text">
+              <span class="highlight-marker">Отслеживайте ключевые показатели вашего бизнеса</span>. Смотрите в Личном кабинете текущие и прошедшие записи, анализируйте их динамику, популярные услуги, загруженность салона и мастеров по дням недели, рассчитывайте заработную плату мастеров по фактически выполненным работам. Гибкие возможности маркетинговых активностей по существующей клиентской базе на базе статистических данных.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section section--alt" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="section__header animate-on-scroll">
+          <h2 id="faq-title" class="section__title">Часто задаваемые вопросы</h2>
+        </div>
+        <div class="faq" role="region" aria-labelledby="faq-title">
+          <div class="faq__item animate-on-scroll">
+            <button class="faq__button" aria-expanded="false" aria-controls="faq-1">
+              <span>Как быстро можно начать работу с сервисом?</span>
+              <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </button>
+            <div id="faq-1" class="faq__answer" role="region">
+              <div class="faq__answer-inner">
+                Регистрация и базовая настройка очень простые занимают несколько минут. Вы создаёте аккаунт, добавляете услуги и мастеров, получаете ссылку на виджет бронирования и сразу можете принимать заявки от клиентов. При необходимости автоматически перенесем настройки Вашей существующей системы бронирования из YClients и DIKIDI. Подробнее читайте в <a href="https://app.2minutes.ru/docs" target="_blank" rel="noopener noreferrer" class="highlight-marker">документации</a>.
+              </div>
+            </div>
+          </div>
+          <div class="faq__item animate-on-scroll">
+            <button class="faq__button" aria-expanded="false" aria-controls="faq-2">
+              <span>Нужно ли устанавливать какие-то приложения?</span>
+              <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </button>
+            <div id="faq-2" class="faq__answer" role="region">
+              <div class="faq__answer-inner">
+                Нет, 2Minutes полностью работает в браузере. Вы также можете настроить виджет в качестве приложения "внутри" Telegram или MAX, которые уже установлены на телефонах Ваших клиентов. Администраторы работают через веб-интерфейс личного кабинета.
+              </div>
+            </div>
+          </div>
+          <div class="faq__item animate-on-scroll">
+            <button class="faq__button" aria-expanded="false" aria-controls="faq-3">
+              <span>Можно ли интегрировать виджет на свой сайт?</span>
+              <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </button>
+            <div id="faq-3" class="faq__answer" role="region">
+              <div class="faq__answer-inner">
+                Да, вы можете встроить виджет бронирования на любой сайт с помощью простого HTML-кода. Также доступна отдельная страница бронирования, ссылку на которую можно разместить в социальных сетях, картах и рекламе.
+              </div>
+            </div>
+          </div>
+          <div class="faq__item animate-on-scroll">
+            <button class="faq__button" aria-expanded="false" aria-controls="faq-4">
+              <span>Как происходит оплата сервиса?</span>
+              <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </button>
+            <div id="faq-4" class="faq__answer" role="region">
+              <div class="faq__answer-inner">
+                Оплата производится ежемесячно за каждого активного мастера. Стоимость — 500 рублей в месяц на одного мастера. Все уведомления, интеграции и функции личного кабинета уже включены в эту стоимость без дополнительных платежей.
+              </div>
+            </div>
+          </div>
+          <div class="faq__item animate-on-scroll">
+            <button class="faq__button" aria-expanded="false" aria-controls="faq-5">
+              <span>Есть ли ограничения по количеству записей?</span>
+              <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </button>
+            <div id="faq-5" class="faq__answer" role="region">
+              <div class="faq__answer-inner">
+                Нет, количество записей не ограничено. Вы можете принимать любое количество бронирований без дополнительной платы. Также нет лимитов на отправку уведомлений клиентам и мастерам.
+              </div>
+            </div>
+          </div>
+          <div class="faq__item animate-on-scroll">
+            <button class="faq__button" aria-expanded="false" aria-controls="faq-6">
+              <span>Как связаться с поддержкой?</span>
+              <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </button>
+            <div id="faq-6" class="faq__answer" role="region">
+              <div class="faq__answer-inner">
+                Наша поддержка доступна в Telegram: <a href="https://t.me/help_2minutes" target="_blank" rel="noopener noreferrer">@help_2minutes</a>. Мы отвечаем на вопросы в рабочее время и стараемся помочь максимально быстро. Также вы можете написать на email: <a href="mailto:i@2minutes.ru">i@2minutes.ru</a>.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__column">
+          <h3 class="footer__column-title">Контакты</h3>
+          <dl class="footer__contacts">
+            <div class="footer__contact-row">
+              <dt>Телефон:</dt>
+              <dd><a href="tel:+74996660123" class="footer__link">+7 (499) 666-01-23</a></dd>
+            </div>
+            <div class="footer__contact-row">
+              <dt>Email:</dt>
+              <dd><a href="mailto:i@2minutes.ru" class="footer__link">i@2minutes.ru</a></dd>
+            </div>
+            <div class="footer__contact-row">
+              <dt>Telegram канал:</dt>
+              <dd><a href="https://t.me/news_2minutes" class="footer__link" target="_blank" rel="noopener noreferrer">@news_2minutes</a></dd>
+            </div>
+            <div class="footer__contact-row">
+              <dt>Поддержка:</dt>
+              <dd><a href="https://t.me/help_2minutes" class="footer__link" target="_blank" rel="noopener noreferrer">@help_2minutes</a></dd>
+            </div>
+          </dl>
+        </div>
+        <div class="footer__column">
+          <h3 class="footer__column-title">Документы</h3>
+          <ul class="footer__list">
+            <li><a href="offer.html" class="footer__link" target="_blank" rel="noopener noreferrer">Оферта</a></li>
+            <li><a href="privacy-policy.html" class="footer__link" target="_blank" rel="noopener noreferrer">Политика конфиденциальности</a></li>
+            <li><a href="cookie-policy.html" class="footer__link" target="_blank" rel="noopener noreferrer">Использование Cookie</a></li>
+            <li><a href="#" class="footer__link" target="_blank" rel="noopener noreferrer">Обработка персональных данных</a></li>
+          </ul>
+        </div>
+        <div class="footer__column">
+          <h3 class="footer__column-title">О сервисе</h3>
+          <p class="footer__text">
+            2Minutes — современный сервис онлайн-бронирования для вашего бизнеса. Простая запись клиентов, автоматические уведомления и удобная аналитика.
+          </p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copyright">© 2025 2Minutes. Все права защищены.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      'use strict';
+
+      // ===== Header Scroll Effect =====
+      const header = document.querySelector('.header');
+      
+      function handleHeaderScroll() {
+        if (window.pageYOffset > 50) {
+          header.classList.add('header--scrolled');
+        } else {
+          header.classList.remove('header--scrolled');
+        }
+      }
+
+      // ===== Intersection Observer for Animations =====
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function setupAnimations() {
+        const animatedElements = document.querySelectorAll('.animate-on-scroll');
+        
+        if (prefersReducedMotion) {
+          // If user prefers reduced motion, make all elements visible immediately
+          animatedElements.forEach(el => {
+            el.classList.add('animate-on-scroll--visible');
+          });
+          return;
+        }
+
+        const observerOptions = {
+          root: null,
+          rootMargin: '0px 0px -10% 0px',
+          threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('animate-on-scroll--visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, observerOptions);
+
+        animatedElements.forEach(el => observer.observe(el));
+      }
+
+      // ===== FAQ Accordion =====
+      function setupFAQ() {
+        const faqItems = document.querySelectorAll('.faq__item');
+
+        faqItems.forEach(item => {
+          const button = item.querySelector('.faq__button');
+          const answer = item.querySelector('.faq__answer');
+          const answerInner = answer.querySelector('.faq__answer-inner');
+
+          button.addEventListener('click', () => {
+            const isOpen = item.classList.contains('faq__item--open');
+            
+            // Close all other items
+            faqItems.forEach(otherItem => {
+              if (otherItem !== item && otherItem.classList.contains('faq__item--open')) {
+                otherItem.classList.remove('faq__item--open');
+                const otherAnswer = otherItem.querySelector('.faq__answer');
+                const otherButton = otherItem.querySelector('.faq__button');
+                otherAnswer.style.maxHeight = '0';
+                otherButton.setAttribute('aria-expanded', 'false');
+              }
+            });
+
+            // Toggle current item
+            if (isOpen) {
+              item.classList.remove('faq__item--open');
+              answer.style.maxHeight = '0';
+              button.setAttribute('aria-expanded', 'false');
+            } else {
+              item.classList.add('faq__item--open');
+              answer.style.maxHeight = answerInner.offsetHeight + 'px';
+              button.setAttribute('aria-expanded', 'true');
+            }
+          });
+
+          // Handle keyboard navigation
+          button.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              button.click();
+            }
+          });
+        });
+      }
+
+      // ===== Mobile Menu =====
+      function setupMobileMenu() {
+        const burger = document.querySelector('.header__burger');
+        const mobileMenu = document.querySelector('.header__mobile-menu');
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+
+        function toggleMenu() {
+          const isOpen = burger.classList.contains('header__burger--open');
+          
+          if (isOpen) {
+            burger.classList.remove('header__burger--open');
+            mobileMenu.classList.remove('header__mobile-menu--open');
+            burger.setAttribute('aria-expanded', 'false');
+            burger.setAttribute('aria-label', 'Открыть меню');
+            document.body.classList.remove('menu-open');
+          } else {
+            burger.classList.add('header__burger--open');
+            mobileMenu.classList.add('header__mobile-menu--open');
+            burger.setAttribute('aria-expanded', 'true');
+            burger.setAttribute('aria-label', 'Закрыть меню');
+            document.body.classList.add('menu-open');
+          }
+        }
+
+        function closeMenu() {
+          burger.classList.remove('header__burger--open');
+          mobileMenu.classList.remove('header__mobile-menu--open');
+          burger.setAttribute('aria-expanded', 'false');
+          burger.setAttribute('aria-label', 'Открыть меню');
+          document.body.classList.remove('menu-open');
+        }
+
+        burger.addEventListener('click', toggleMenu);
+
+        // Close menu when clicking on a link
+        mobileLinks.forEach(link => {
+          link.addEventListener('click', closeMenu);
+        });
+
+        // Close menu on Escape key
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && burger.classList.contains('header__burger--open')) {
+            closeMenu();
+            burger.focus();
+          }
+        });
+      }
+
+      // ===== Smooth Scroll for Anchor Links =====
+      function setupSmoothScroll() {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href === '#') return;
+            
+            const target = document.querySelector(href);
+            if (target) {
+              e.preventDefault();
+              const headerHeight = header.offsetHeight;
+              const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+              
+              window.scrollTo({
+                top: targetPosition,
+                behavior: prefersReducedMotion ? 'auto' : 'smooth'
+              });
+            }
+          });
+        });
+      }
+
+      // ===== Throttle Function for Performance =====
+      function throttle(func, limit) {
+        let inThrottle;
+        return function(...args) {
+          if (!inThrottle) {
+            func.apply(this, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+          }
+        };
+      }
+
+      // ===== Initialize =====
+      function init() {
+        // Scroll listener for header
+        window.addEventListener('scroll', throttle(handleHeaderScroll, 100), { passive: true });
+        handleHeaderScroll(); // Initial check
+
+        // Setup animations
+        setupAnimations();
+
+        // Setup FAQ
+        setupFAQ();
+
+        // Setup smooth scroll
+        setupSmoothScroll();
+
+        // Setup mobile menu
+        setupMobileMenu();
+
+      }
+
+      // Run when DOM is ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+    })();
+  </script>
+</body>
+</html>
+
