@@ -78,6 +78,7 @@ rsync -av --delete \
     --exclude='README.md' \
     --exclude='.gitignore' \
     --exclude='SERVER_DEPLOY.md' \
+    --exclude='UPDATE.md' \
     --exclude='angie-config.conf' \
     "repo/static-site/" "$DEPLOY_DIR/"
 
