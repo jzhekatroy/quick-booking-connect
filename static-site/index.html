@@ -1213,6 +1213,125 @@
       }
     })();
   </script>
+  <script>
+    (function () {
+      const BASE_URL = "https://app.2minutes.ru/login";
+      const STORAGE_KEY = "bb_marketing_session";
+      const SESSION_QUERY_KEY = "bb_session";
+      const COOKIE_MAX_AGE = 60 * 60 * 24 * 30;
+      const EXTRA_KEYS = [
+        SESSION_QUERY_KEY,
+        "click_id",
+        "yclid",
+        "gclid",
+        "fbclid",
+        "msclkid",
+        "vk_click_id",
+        "from",
+        "ref",
+      ];
+
+      const isAllowedKey = (key) =>
+        key.indexOf("utm_") === 0 || EXTRA_KEYS.indexOf(key) !== -1;
+
+      const generateSessionId = () => {
+        if (window.crypto && typeof window.crypto.randomUUID === "function") {
+          return `bb_${window.crypto.randomUUID()}`;
+        }
+        return `bb_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+      };
+
+      const readStoredSession = () => {
+        try {
+          const fromStorage = localStorage.getItem(STORAGE_KEY);
+          if (fromStorage) {
+            return JSON.parse(fromStorage);
+          }
+        } catch {}
+
+        try {
+          const cookie = document.cookie
+            .split('; ')
+            .find((row) => row.indexOf(`${STORAGE_KEY}=`) === 0);
+          if (!cookie) return null;
+          const value = cookie.split('=')[1];
+          return value ? JSON.parse(decodeURIComponent(value)) : null;
+        } catch {}
+
+        return null;
+      };
+
+      const persistSession = (session) => {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(session));
+        } catch {}
+
+        try {
+          const hostname = window.location.hostname;
+          const domain = hostname.endsWith('2minutes.ru')
+            ? '.2minutes.ru'
+            : undefined;
+          let cookie = `${STORAGE_KEY}=${encodeURIComponent(
+            JSON.stringify(session)
+          )}; path=/; max-age=${COOKIE_MAX_AGE}; SameSite=Lax`;
+          if (domain) {
+            cookie += `; domain=${domain}`;
+          }
+          document.cookie = cookie;
+        } catch {}
+      };
+
+      const applyLinks = (query) => {
+        if (!query) return;
+        const links = document.querySelectorAll(
+          'a[href^="https://app.2minutes.ru/login"]'
+        );
+        links.forEach((link) => {
+          link.href = `${BASE_URL}?${query}`;
+        });
+      };
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const params = new URLSearchParams(window.location.search);
+        const filtered = new URLSearchParams();
+
+        params.forEach((value, key) => {
+          if (isAllowedKey(key)) {
+            filtered.set(key, value);
+          }
+        });
+
+        if (filtered.toString()) {
+          const sessionId =
+            filtered.get(SESSION_QUERY_KEY) || generateSessionId();
+          filtered.set(SESSION_QUERY_KEY, sessionId);
+
+          const payload = {
+            sessionId,
+            query: filtered.toString(),
+            params: {},
+            landingPath: window.location.href,
+            referrer: document.referrer || '',
+            capturedAt: new Date().toISOString(),
+          };
+
+          filtered.forEach((value, key) => {
+            payload.params[key] = value;
+          });
+
+          persistSession(payload);
+          applyLinks(payload.query);
+          return;
+        }
+
+        const stored = readStoredSession();
+        if (stored && stored.query) {
+          applyLinks(stored.query);
+        }
+      });
+    })();
+  </script>
+
 </body>
 </html>
 

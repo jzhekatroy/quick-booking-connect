@@ -3,17 +3,15 @@ import { Menu } from "lucide-react";
 import { Link } from "react-router-dom";
 import logo from "@/assets/logo.png";
 import { Button } from "./ui/button";
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-} from "./ui/sheet";
+import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
+import useSignupLink from "@/hooks/useSignupLink";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const signupHref = useSignupLink();
 
   const handleLogoClick = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -21,8 +19,8 @@ const Header = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <Link 
-              to="/" 
+            <Link
+              to="/"
               onClick={handleLogoClick}
               className="cursor-pointer hover:opacity-80 transition-opacity"
               aria-label="На главную"
@@ -30,7 +28,7 @@ const Header = () => {
               <img src={logo} alt="2Minutes" className="h-8 sm:h-10 w-auto object-contain" />
             </Link>
           </div>
-          
+
           {/* Desktop buttons */}
           <div className="hidden md:flex items-center gap-3">
             <Button size="default" variant="outline" className="text-sm font-semibold min-w-[180px]" asChild>
@@ -38,10 +36,13 @@ const Header = () => {
                 Демонстрация
               </a>
             </Button>
-            <Button size="default" className="text-sm font-semibold min-w-[180px]" style={{
-              background: 'var(--gradient-primary)'
-            }} asChild>
-              <a href="https://app.2minutes.ru/login" target="_blank" rel="noopener noreferrer">
+            <Button
+              size="default"
+              className="text-sm font-semibold min-w-[180px]"
+              style={{ background: "var(--gradient-primary)" }}
+              asChild
+            >
+              <a href={signupHref} target="_blank" rel="noopener noreferrer">
                 Начать бесплатно
               </a>
             </Button>
@@ -56,10 +57,10 @@ const Header = () => {
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px]">
               <div className="flex flex-col gap-4 mt-8">
-                <Button 
+                <Button
                   size="default"
-                  variant="outline" 
-                  className="w-full text-sm font-semibold" 
+                  variant="outline"
+                  className="w-full text-sm font-semibold"
                   asChild
                   onClick={() => setOpen(false)}
                 >
@@ -67,16 +68,14 @@ const Header = () => {
                     Демонстрация
                   </a>
                 </Button>
-                <Button 
+                <Button
                   size="default"
-                  className="w-full text-sm font-semibold" 
-                  style={{
-                    background: 'var(--gradient-primary)'
-                  }} 
+                  className="w-full text-sm font-semibold"
+                  style={{ background: "var(--gradient-primary)" }}
                   asChild
                   onClick={() => setOpen(false)}
                 >
-                  <a href="https://app.2minutes.ru/login" target="_blank" rel="noopener noreferrer">
+                  <a href={signupHref} target="_blank" rel="noopener noreferrer">
                     Начать бесплатно
                   </a>
                 </Button>
