@@ -14,6 +14,7 @@ NC='\033[0m'
 
 # Параметры
 REPO_URL="https://github.com/jzhekatroy/quick-booking-connect.git"
+AUTH_TOKEN="${GITHUB_TOKEN:-}"
 DEPLOY_DIR="/var/www/2minutes.ru"
 TEMP_DIR=$(mktemp -d)
 BRANCH="${BRANCH:-main}"
@@ -43,7 +44,12 @@ echo ""
 # Клонирование репозитория
 echo -e "${YELLOW}📥 Клонирование репозитория...${NC}"
 cd "$TEMP_DIR"
-git clone --depth 1 --branch "$BRANCH" "$REPO_URL" repo
+if [ -n "$AUTH_TOKEN" ]; then
+    # Клонирование с токеном (из переменной окружения GITHUB_TOKEN)
+    git clone --depth 1 --branch "$BRANCH" "https://${AUTH_TOKEN}@${REPO_URL#https://}" repo
+else
+    git clone --depth 1 --branch "$BRANCH" "$REPO_URL" repo
+fi
 echo -e "${GREEN}✓ Репозиторий клонирован${NC}"
 echo ""
 
