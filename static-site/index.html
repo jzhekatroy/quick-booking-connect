@@ -444,10 +444,6 @@
         width: 100%;
         justify-content: center;
       }
-
-      .hero__logo {
-        display: none;
-      }
     }
 
     /* ===== Sections ===== */
@@ -759,7 +755,7 @@
       </a>
       <nav class="header__actions" role="navigation" aria-label="Основная навигация">
         <a href="https://app.2minutes.ru/book/demo" target="_blank" rel="noopener noreferrer" class="btn btn--secondary btn--small">Демонстрация</a>
-        <a href="https://app.2minutes.ru/login" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--small">Личный кабинет</a>
+        <a href="https://app.2minutes.ru/login" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--small">Вход / Регистрация</a>
       </nav>
       <button class="header__burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">
         <span class="header__burger-line"></span>
@@ -769,7 +765,7 @@
     </div>
     <nav id="mobile-menu" class="header__mobile-menu" role="navigation" aria-label="Мобильная навигация">
       <a href="https://app.2minutes.ru/book/demo" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">Демонстрация</a>
-      <a href="https://app.2minutes.ru/login" target="_blank" rel="noopener noreferrer" class="btn btn--primary">Личный кабинет</a>
+      <a href="https://app.2minutes.ru/login" target="_blank" rel="noopener noreferrer" class="btn btn--primary">Вход / Регистрация</a>
     </nav>
   </header>
 
@@ -779,31 +775,38 @@
       <div class="container hero__inner">
         <img src="assets/logo.png" alt="" class="hero__logo" aria-hidden="true">
         <h1 id="hero-title" class="hero__title animate-on-scroll">
-          <span class="hero__title-accent">Онлайн-запись клиентов</span><br>с которой клиенты возвращаются
+          <span class="hero__title-accent">Онлайн-запись</span><br>с которой клиенты возвращаются
         </h1>
         <p class="hero__description animate-on-scroll">
-          Бронирование на основе приложений в мессенджерах (Telegram и MAX) и индивидуальных ссылок.<br>
-          Система держит прямой контакт с клиентами через уведомления, рассылки и личные сообщения.<br>
-          <strong class="hero__price">Всего за <span class="hero__price-value">500 рублей в месяц</span> за одного мастера. Уведомления бесплатно.</strong>
+          Клиент записывается по ссылке один раз — и ваш салон навсегда остается у него в мессенджере (Telegram, MAX или WhatsApp). В следующий раз он запишется к вам за 3 секунды, просто открыв чат.<br>
+          <strong class="hero__price">500 рублей в месяц за мастера. Уведомления бесплатно.</strong>
         </p>
         <div class="hero__actions animate-on-scroll">
           <a href="https://app.2minutes.ru/book/demo" target="_blank" rel="noopener noreferrer" class="btn btn--secondary btn--small">Демонстрация</a>
-          <a href="https://app.2minutes.ru/login" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--small">Личный кабинет</a>
+          <a href="https://app.2minutes.ru/register" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--small">Регистрация</a>
         </div>
       </div>
     </section>
 
-    <!-- Feature 1: Simple Booking -->
+    <!-- Feature 1: Retention Funnel (New) -->
     <section class="section" aria-labelledby="feature-1-title">
       <div class="container">
         <div class="feature">
           <div class="feature__image-wrapper">
-            <img src="assets/screenshots/widget.jpg" alt="Скриншот виджета бронирования" class="feature__image">
+            <img src="assets/screenshots/widget.jpg" alt="Выбор способа записи" class="feature__image">
           </div>
           <div class="feature__content animate-on-scroll animate-on-scroll--right">
-            <h2 id="feature-1-title" class="feature__title">Простая запись клиента в&nbsp;3&nbsp;клика</h2>
+            <h2 id="feature-1-title" class="feature__title">Превращайте разовых клиентов в постоянных</h2>
             <p class="feature__text">
-              Поделитесь ссылкой на виджет в любом удобном инструменте. <span class="highlight-marker">Работайте с ним как с полноценным сайтом</span>, добавьте в свой существующий сайт или интегрируйте в Telegram и MAX в качестве встроенного приложения. Очень простая механика работы виджета — клиент выбирает услугу, мастера и время. В виджете будет описание всех услуг и функционал мгновенного заказа. При повторном заказе не нужно искать ссылку, <span class="highlight-marker">приложение уже у клиента в мессенджере.</span> При необходимости автоматически перенесем настройки Вашей существующей системы бронирования из YClients и DIKIDI.
+              Как это работает? Вы размещаете одну ссылку в Яндекс.Картах, 2GIS или Instagram.
+            </p>
+            <ul style="margin-top: 1rem; margin-bottom: 1rem; padding-left: 1.2rem; list-style-type: disc; color: var(--color-text-secondary);">
+              <li>Клиент переходит по ссылке.</li>
+              <li>Система предлагает выбор: записаться на сайте или <strong>через мессенджер</strong> (Telegram, MAX).</li>
+              <li>Если клиент выбирает мессенджер — <span class="highlight-marker">он навсегда остается у вас в контактах</span>.</li>
+            </ul>
+            <p class="feature__text">
+              В следующий раз ему не нужно искать вас в поиске. Он просто открывает чат с вами и нажимает кнопку "Записаться".
             </p>
           </div>
         </div>
@@ -818,9 +821,15 @@
             <img src="assets/screenshots/notifications.jpg" alt="Скриншот уведомлений клиентам в Telegram" class="feature__image">
           </div>
           <div class="feature__content animate-on-scroll animate-on-scroll--left">
-            <h2 id="feature-2-title" class="feature__title">Бесплатные и безлимитные уведомления</h2>
+            <h2 id="feature-2-title" class="feature__title">Бесплатные уведомления (WhatsApp, Telegram, MAX)</h2>
             <p class="feature__text">
-              Система автоматически отправляет подтверждение записи, напоминания о визите и рассылки с акциями. Используйте механизмы личной переписки с каждым клиентом и сообщения с предложениями повторной записи. Отправляйте сколько угодно сообщений без дополнительной платы — всё уже включено в тариф. Отправляйте уведомления в Telegram, WhatsApp и MAX, <span class="highlight-marker">безлимитно и всегда бесплатно.</span> Любые действия с заказами фиксируются в удобных для Вас и Ваших клиентов мессенджерах.
+              Забудьте про покупку пакетов SMS. Система автоматически отправляет подтверждения записи и напоминания о визите.
+            </p>
+            <p class="feature__text" style="margin-top: 1rem;">
+              Отправляйте сколько угодно сообщений — всё включено в тариф. <span class="highlight-marker">WhatsApp, Telegram и MAX — бесплатно и безлимитно.</span>
+            </p>
+            <p class="feature__text">
+              Любые действия с заказами фиксируются в удобных для Вас и Ваших клиентов мессенджерах. Экономьте от 2000₽ в месяц на связи с клиентами.
             </p>
           </div>
         </div>
@@ -835,10 +844,15 @@
             <img src="assets/screenshots/staff-notifications.jpg" alt="Скриншот уведомлений сотрудникам" class="feature__image">
           </div>
           <div class="feature__content animate-on-scroll animate-on-scroll--right">
-            <h2 id="feature-3-title" class="feature__title">Уведомления сотрудникам и&nbsp;удобный просмотр расписания</h2>
+            <h2 id="feature-3-title" class="feature__title">Ваш телефон — ваше рабочее место</h2>
             <p class="feature__text">
-              Мастера, к которым записались клиенты, получают мгновенные уведомления о новых записях и изменениях в их расписании прямо в Telegram или MAX, а также напоминания о том, что скоро начинается визит клиента. Сотрудники могут в любой момент открыть в мобильном телефоне свой график на день, неделю или месяц и видеть все брони клиентов, заказанные услуги и время визитов. <span class="highlight-marker">Всё под рукой</span>, обновляется автоматически, всегда актуально.
+              Мастера получают мгновенные уведомления о новых записях прямо в Telegram или MAX. Не нужно заходить на сайт или скачивать сложные приложения.
             </p>
+            <ul style="margin-top: 1rem; padding-left: 1.2rem; list-style-type: disc; color: var(--color-text-secondary);">
+               <li>Личное расписание на день/неделю всегда под рукой.</li>
+               <li>Мгновенные уведомления об изменениях.</li>
+               <li>Не нужно обучать персонал — они уже умеют пользоваться чатами.</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -852,9 +866,9 @@
             <img src="assets/screenshots/admin-panel.jpg" alt="Скриншот личного кабинета администратора" class="feature__image">
           </div>
           <div class="feature__content animate-on-scroll animate-on-scroll--left">
-            <h2 id="feature-4-title" class="feature__title">Телефон - Ваше рабочее место</h2>
+            <h2 id="feature-4-title" class="feature__title">Рабочее место администратора</h2>
             <p class="feature__text">
-              Управляйте сервисом через свой мобильный телефон или в личном кабинете на сайте. Удобный интерфейс для управления записями, клиентами и расписанием. Детальная настройка услуг, доступных к бронированию, группировки предложений, гибкое управление клиентскими уведомлениями, настройка информирования мастеров о запланированных заказах. Вся информация в одном месте <span class="highlight-marker">в очень удобном формате</span>, доступ с любого устройства.
+              Удобный интерфейс для управления записями, клиентами и расписанием. Детальная настройка услуг, доступных к бронированию, группировки предложений, гибкое управление клиентскими уведомлениями, настройка информирования мастеров о запланированных заказах. Вся информация в одном месте <span class="highlight-marker">в очень удобном формате</span>, доступ с любого устройства.
             </p>
           </div>
         </div>
@@ -894,7 +908,7 @@
             </button>
             <div id="faq-1" class="faq__answer" role="region">
               <div class="faq__answer-inner">
-                Регистрация и базовая настройка очень простые занимают несколько минут. Вы создаёте аккаунт, добавляете услуги и мастеров, получаете ссылку на виджет бронирования и сразу можете принимать заявки от клиентов. При необходимости автоматически перенесем настройки Вашей существующей системы бронирования из YClients и DIKIDI. Подробнее читайте в <a href="https://app.2minutes.ru/docs" target="_blank" rel="noopener noreferrer" class="highlight-marker">документации</a>.
+                Регистрация занимает пару минут. Если у вас уже есть база клиентов и настроенные услуги в YClients или DIKIDI — <strong>напишите нам в поддержку, мы поможем перенести все данные</strong>. Вы получите полностью готовую к работе систему.
               </div>
             </div>
           </div>
@@ -1010,7 +1024,7 @@
         </div>
       </div>
       <div class="footer__bottom">
-        <p class="footer__copyright">© 2025 2Minutes. Все права защищены.</p>
+        <p class="footer__copyright">© 2026 2Minutes. Все права защищены.</p>
       </div>
     </div>
   </footer>
